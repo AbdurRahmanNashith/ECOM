@@ -474,6 +474,8 @@ export default function page() {
                 <div className="space-y-2 text-center">
                   <h3 className="text-lg font-bold">S4</h3>
                   <p className="text-sm text-gray-600">
+
+                  <h3 className="text-lg font-bold">S4                  <p className="text-sm text-gray-600">
                     #20/16, 1st Lane, Nethaji Road,
                     <br />
                     (Near Railway Station)
@@ -493,7 +495,9 @@ export default function page() {
                   />
                 </div>
                 <div className="space-y-2 text-center">
+
                   <h3 className="text-lg font-bold">S6</h3>
+                  <h3 className="text-lg font-bold">S6
                   <p className="text-sm text-gray-600">
                     #20A/69, Nethaji Road,
                     <br />
@@ -515,6 +519,9 @@ export default function page() {
                 </div>
                 <div className="space-y-2 text-center">
                   <h3 className="text-lg font-bold">S3</h3>
+
+                  <h3 className="text-lg font-bold">S3
+
                   <p className="text-sm text-gray-600">
                     #2/1, Kannigapuram, NH-46,
                     <br />
