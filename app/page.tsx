@@ -1,20 +1,14 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Heart } from "lucide-react";
-import Link from "next/link";
-import { useState, useRef } from "react";
+import { Button } from "@/components/ui/button"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import Link from "next/link"
+import { useState, useRef } from "react"
+import ProductCard from "@/components/ui/productCard"
 
 export default function page() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const carouselApiRef = useRef<any>(null);
+  const [activeIndex, setActiveIndex] = useState(0)
+  const carouselApiRef = useRef<any>(null)
 
   const products = [
     {
@@ -23,6 +17,9 @@ export default function page() {
       price: "₹11 999.00",
       name: "Superstar II Shoes",
       category: "Originals",
+      colors: null,
+      badge: null,
+      isNew: false,
     },
     {
       id: 2,
@@ -30,6 +27,9 @@ export default function page() {
       price: "₹9 999.00",
       name: "Superstar II Shoes",
       category: "Originals",
+      colors: null,
+      badge: null,
+      isNew: false,
     },
     {
       id: 3,
@@ -37,6 +37,9 @@ export default function page() {
       price: "₹11 999.00",
       name: "Superstar II Shoes",
       category: "Originals",
+      colors: null,
+      badge: null,
+      isNew: false,
     },
     {
       id: 4,
@@ -44,6 +47,9 @@ export default function page() {
       price: "₹11 999.00",
       name: "Superstar II Shoes",
       category: "Originals",
+      colors: null,
+      badge: null,
+      isNew: false,
     },
     {
       id: 5,
@@ -51,6 +57,9 @@ export default function page() {
       price: "₹12 999.00",
       name: "Superstar Classic",
       category: "Originals",
+      colors: null,
+      badge: null,
+      isNew: false,
     },
     {
       id: 6,
@@ -58,6 +67,9 @@ export default function page() {
       price: "₹10 999.00",
       name: "Superstar Retro",
       category: "Originals",
+      colors: null,
+      badge: null,
+      isNew: false,
     },
     {
       id: 7,
@@ -65,6 +77,9 @@ export default function page() {
       price: "₹13 999.00",
       name: "Superstar Premium",
       category: "Originals",
+      colors: null,
+      badge: null,
+      isNew: false,
     },
     {
       id: 8,
@@ -72,8 +87,11 @@ export default function page() {
       price: "₹11 499.00",
       name: "Superstar Limited",
       category: "Originals",
+      colors: null,
+      badge: null,
+      isNew: false,
     },
-  ];
+  ]
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
@@ -90,12 +108,8 @@ export default function page() {
             />
 
             <div className="relative z-20 mt-auto">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 tracking-tight">
-                SUPERSTAR
-              </h1>
-              <p className="text-base sm:text-lg mb-6 sm:mb-8 max-w-sm">
-                Because icons wear the original icon.
-              </p>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 tracking-tight">SUPERSTAR</h1>
+              <p className="text-base sm:text-lg mb-6 sm:mb-8 max-w-sm">Because icons wear the original icon.</p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Button
                   variant="outline"
@@ -168,9 +182,7 @@ export default function page() {
           {/* Category Filter */}
           <div className="flex flex-wrap items-center justify-between mb-8 sm:mb-12">
             <div className="flex flex-wrap gap-0">
-              <button className="bg-black text-white px-6 py-2 text-sm font-medium">
-                Originals
-              </button>
+              <button className="bg-black text-white px-6 py-2 text-sm font-medium">Originals</button>
               {/* Updated shoe categories */}
               <button className="border border-gray-300 text-black px-6 py-2 text-sm font-medium hover:bg-gray-50">
                 Oxford
@@ -182,9 +194,7 @@ export default function page() {
                 Loafers
               </button>
             </div>
-            <button className="text-black font-medium underline text-sm">
-              Shop all
-            </button>
+            <button className="text-black font-medium underline text-sm">Shop all</button>
           </div>
 
           <div className="mb-16">
@@ -198,44 +208,18 @@ export default function page() {
                 }}
                 className="w-full"
                 setApi={(api) => {
-                  carouselApiRef.current = api;
+                  carouselApiRef.current = api
                   if (api) {
                     api.on("select", () => {
-                      setActiveIndex(api.selectedScrollSnap());
-                    });
+                      setActiveIndex(api.selectedScrollSnap())
+                    })
                   }
                 }}
               >
                 <CarouselContent className="gap-4">
                   {products.map((product) => (
-                    <CarouselItem
-                      key={product.id}
-                      className="basis-1/4 min-w-0"
-                    >
-                      <div
-                        className="group cursor-pointer"
-                        onClick={() =>
-                          console.log(`Clicked product ${product.id}`)
-                        }
-                      >
-                        <div className="relative bg-gray-100 overflow-hidden mb-4 transition-all duration-200 hover:border hover:border-black aspect-[4/5]">
-                          <button className="absolute top-4 right-4 z-10 p-2 hover:bg-white/20 rounded-full transition-colors">
-                            <Heart className="w-5 h-5 text-gray-600" />
-                          </button>
-                          <img
-                            src={product.image || "/placeholder.svg"}
-                            alt={product.name}
-                            className="w-full h-full object-contain p-8"
-                          />
-                        </div>
-                        <div className="space-y-1 px-2">
-                          <p className="font-bold text-sm">{product.price}</p>
-                          <h3 className="font-light text-sm">{product.name}</h3>
-                          <p className="text-gray-500 text-xs font-light">
-                            {product.category}
-                          </p>
-                        </div>
-                      </div>
+                    <CarouselItem key={product.id} className="basis-1/4 min-w-0">
+                      <ProductCard product={product} />
                     </CarouselItem>
                   ))}
                 </CarouselContent>
@@ -272,13 +256,8 @@ export default function page() {
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-lg font-bold">Y-3 Tennis</h3>
-                  <p className="text-sm text-gray-600">
-                    As worn by Sascha Zverev.
-                  </p>
-                  <Button
-                    variant="link"
-                    className="p-0 h-auto text-black font-medium underline"
-                  >
+                  <p className="text-sm text-gray-600">As worn by Sascha Zverev.</p>
+                  <Button variant="link" className="p-0 h-auto text-black font-medium underline">
                     Shop Now
                   </Button>
                 </div>
@@ -294,17 +273,11 @@ export default function page() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <h3 className="text-lg font-bold">
-                    WIN A SIGNED LIVERPOOL FC AWAY JERSEY
-                  </h3>
+                  <h3 className="text-lg font-bold">WIN A SIGNED LIVERPOOL FC AWAY JERSEY</h3>
                   <p className="text-sm text-gray-600">
-                    Stand a chance to own a one-of-a-kind piece of Liverpool FC
-                    memorabilia with your adiClub points.
+                    Stand a chance to own a one-of-a-kind piece of Liverpool FC memorabilia with your adiClub points.
                   </p>
-                  <Button
-                    variant="link"
-                    className="p-0 h-auto text-black font-medium underline"
-                  >
+                  <Button variant="link" className="p-0 h-auto text-black font-medium underline">
                     Redeem now
                   </Button>
                 </div>
@@ -321,13 +294,8 @@ export default function page() {
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-lg font-bold">EXPLORE BEYOND LIMITS</h3>
-                  <p className="text-sm text-gray-600">
-                    adidas TERREX | National Geographic
-                  </p>
-                  <Button
-                    variant="link"
-                    className="p-0 h-auto text-black font-medium underline"
-                  >
+                  <p className="text-sm text-gray-600">adidas TERREX | National Geographic</p>
+                  <Button variant="link" className="p-0 h-auto text-black font-medium underline">
                     SHOP NOW
                   </Button>
                 </div>
@@ -344,13 +312,8 @@ export default function page() {
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-lg font-bold">Never Out Of Style</h3>
-                  <p className="text-sm text-gray-600">
-                    Shop the best of adidas
-                  </p>
-                  <Button
-                    variant="link"
-                    className="p-0 h-auto text-black font-medium underline"
-                  >
+                  <p className="text-sm text-gray-600">Shop the best of adidas</p>
+                  <Button variant="link" className="p-0 h-auto text-black font-medium underline">
                     Shop now
                   </Button>
                 </div>
@@ -384,9 +347,7 @@ export default function page() {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
-                      <h3 className="text-lg font-bold text-center border-b-2 border-black pb-1">
-                        OXFORD
-                      </h3>
+                      <h3 className="text-lg font-bold text-center border-b-2 border-black pb-1">OXFORD</h3>
                     </div>
                   </CarouselItem>
 
@@ -399,9 +360,7 @@ export default function page() {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
-                      <h3 className="text-lg font-bold text-center border-b-2 border-black pb-1">
-                        SNEAKERS
-                      </h3>
+                      <h3 className="text-lg font-bold text-center border-b-2 border-black pb-1">SNEAKERS</h3>
                     </div>
                   </CarouselItem>
 
@@ -414,9 +373,7 @@ export default function page() {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
-                      <h3 className="text-lg font-bold text-center border-b-2 border-black pb-1">
-                        LOAFERS
-                      </h3>
+                      <h3 className="text-lg font-bold text-center border-b-2 border-black pb-1">LOAFERS</h3>
                     </div>
                   </CarouselItem>
 
@@ -429,9 +386,7 @@ export default function page() {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
-                      <h3 className="text-lg font-bold text-center border-b-2 border-black pb-1">
-                        BOOTS
-                      </h3>
+                      <h3 className="text-lg font-bold text-center border-b-2 border-black pb-1">BOOTS</h3>
                     </div>
                   </CarouselItem>
 
@@ -444,9 +399,7 @@ export default function page() {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
-                      <h3 className="text-lg font-bold text-center border-b-2 border-black pb-1">
-                        HEELS
-                      </h3>
+                      <h3 className="text-lg font-bold text-center border-b-2 border-black pb-1">HEELS</h3>
                     </div>
                   </CarouselItem>
                 </CarouselContent>
@@ -544,34 +497,27 @@ export default function page() {
             style={{ fontFamily: "ITC Avant Garde Gothic, sans-serif" }}
           >
             <p>
-              With over 28 years of experience in the footwear and leather
-              industry, Shoe Style Ambur has grown into a trusted name for
-              quality, comfort, and style. Since our establishment in 1997, we
-              have been committed to crafting and curating an exclusive
-              collection of shoes and leather products that cater to every need
-              — from everyday wear to special occasions.
+              With over 28 years of experience in the footwear and leather industry, Shoe Style Ambur has grown into a
+              trusted name for quality, comfort, and style. Since our establishment in 1997, we have been committed to
+              crafting and curating an exclusive collection of shoes and leather products that cater to every need —
+              from everyday wear to special occasions.
             </p>
 
             <p>
-              Our wide range includes stylish and durable footwear for men,
-              women, and kids, along with premium leather goods that reflect
-              timeless craftsmanship. Each product is carefully selected to
-              ensure the perfect blend of design, comfort, and durability,
-              making sure our customers always step out in confidence.
+              Our wide range includes stylish and durable footwear for men, women, and kids, along with premium leather
+              goods that reflect timeless craftsmanship. Each product is carefully selected to ensure the perfect blend
+              of design, comfort, and durability, making sure our customers always step out in confidence.
             </p>
 
             <p>
-              Over the years, we have built long-lasting relationships with our
-              customers by delivering not just products, but also an experience
-              rooted in trust, value, and authenticity. Whether you are looking
-              for classic formals, trendy casuals, or comfortable everyday wear,
-              Shoe Style Ambur is your one-stop destination for footwear and
-              leather essentials.
+              Over the years, we have built long-lasting relationships with our customers by delivering not just
+              products, but also an experience rooted in trust, value, and authenticity. Whether you are looking for
+              classic formals, trendy casuals, or comfortable everyday wear, Shoe Style Ambur is your one-stop
+              destination for footwear and leather essentials.
             </p>
 
             <p className="text-lg sm:text-xl lg:text-2xl font-semibold">
-              Step in today and discover why we've been the choice of
-              generations since 1997.
+              Step in today and discover why we've been the choice of generations since 1997.
             </p>
           </div>
         </div>
@@ -586,14 +532,11 @@ export default function page() {
           >
             SHOE STYLE
           </h2>
-          <p
-            className="text-sm sm:text-base text-gray-300"
-            style={{ fontFamily: "Calibri, sans-serif" }}
-          >
+          <p className="text-sm sm:text-base text-gray-300" style={{ fontFamily: "Calibri, sans-serif" }}>
             Since 1997
           </p>
         </div>
       </section>
     </div>
-  );
+  )
 }
