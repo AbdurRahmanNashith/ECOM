@@ -1,6 +1,7 @@
 "use client"
 import { ChevronDown, Menu, X } from "lucide-react"
 import { useState, useEffect } from "react"
+import Link from "next/link"
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -54,19 +55,21 @@ export default function Header() {
 
       {/* Header Navigation */}
       <header className="bg-white border-b border-gray-100 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-14 sm:h-16">
-            {/* Logo */}
-            <div className="flex-shrink-0">
+        <div className="flex items-center justify-between h-14 sm:h-16 pl-4 pr-4 sm:pr-6 lg:pr-8">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <Link href="/">
               <h1
-                className="text-black text-lg font-extrabold leading-5 sm:text-xl"
+                className="text-black text-lg font-extrabold leading-5 sm:text-3xl cursor-pointer"
                 style={{ fontFamily: "BRADHI, sans-serif" }}
               >
                 SHOE STYLE
               </h1>
-            </div>
+            </Link>
+          </div>
 
-            <div className="hidden lg:block">
+          <div className="hidden lg:block">
+            <div className="mr-4">
               <NavigationMenu>
                 <NavigationMenuList className="flex items-center space-x-6 xl:space-x-8">
                   <NavigationMenuItem>
@@ -75,23 +78,37 @@ export default function Header() {
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
                       <div className="grid w-[200px] gap-3 p-4">
-                        <NavigationMenuLink
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          href="#"
-                        >
-                          <div className="text-sm font-medium leading-none">Casual</div>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href="/products/men/casual"
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            <div className="text-sm font-medium leading-none">Casual</div>
+                          </Link>
                         </NavigationMenuLink>
-                        <NavigationMenuLink
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          href="#"
-                        >
-                          <div className="text-sm font-medium leading-none">Formal</div>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href="/products/men/formal"
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            <div className="text-sm font-medium leading-none">Formal</div>
+                          </Link>
                         </NavigationMenuLink>
-                        <NavigationMenuLink
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          href="#"
-                        >
-                          <div className="text-sm font-medium leading-none">Boots</div>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href="/products/men/sports"
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            <div className="text-sm font-medium leading-none">Sports</div>
+                          </Link>
+                        </NavigationMenuLink>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href="/products/men/new-arrivals"
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            <div className="text-sm font-medium leading-none">New Arrivals</div>
+                          </Link>
                         </NavigationMenuLink>
                         <NavigationMenuLink
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
@@ -120,17 +137,29 @@ export default function Header() {
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
                       <div className="grid w-[200px] gap-3 p-4">
-                        <NavigationMenuLink
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          href="#"
-                        >
-                          <div className="text-sm font-medium leading-none">Formals</div>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href="/products/women/formal"
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            <div className="text-sm font-medium leading-none">Formals</div>
+                          </Link>
                         </NavigationMenuLink>
-                        <NavigationMenuLink
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          href="#"
-                        >
-                          <div className="text-sm font-medium leading-none">Casuals</div>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href="/products/women/casual"
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            <div className="text-sm font-medium leading-none">Casuals</div>
+                          </Link>
+                        </NavigationMenuLink>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href="/products/women/new-arrivals"
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            <div className="text-sm font-medium leading-none">New Arrivals</div>
+                          </Link>
                         </NavigationMenuLink>
                         <NavigationMenuLink
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
@@ -171,17 +200,29 @@ export default function Header() {
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
                       <div className="grid w-[200px] gap-3 p-4">
-                        <NavigationMenuLink
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          href="#"
-                        >
-                          <div className="text-sm font-medium leading-none">Boys</div>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href="/products/kids/boys"
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            <div className="text-sm font-medium leading-none">Boys</div>
+                          </Link>
                         </NavigationMenuLink>
-                        <NavigationMenuLink
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          href="#"
-                        >
-                          <div className="text-sm font-medium leading-none">Girls</div>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href="/products/kids/girls"
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            <div className="text-sm font-medium leading-none">Girls</div>
+                          </Link>
+                        </NavigationMenuLink>
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href="/products/kids/new-arrivals"
+                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          >
+                            <div className="text-sm font-medium leading-none">New Arrivals</div>
+                          </Link>
                         </NavigationMenuLink>
                       </div>
                     </NavigationMenuContent>
@@ -245,54 +286,54 @@ export default function Header() {
                 </NavigationMenuList>
               </NavigationMenu>
             </div>
+          </div>
 
-            <button
-              className="lg:hidden p-2 text-black hover:text-gray-600"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle mobile menu"
+          <button
+            className="lg:hidden p-2 text-black hover:text-gray-600"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
+          >
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
+      </header>
+
+      {isMobileMenuOpen && (
+        <div className="lg:hidden bg-white border-t border-gray-100 shadow-lg">
+          <div className="px-4 py-2 space-y-1">
+            <a
+              href="#"
+              className="block px-3 py-2 text-sm font-medium text-black hover:text-gray-600 hover:bg-gray-50 rounded-md"
             >
-              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
+              MEN
+            </a>
+            <a
+              href="#"
+              className="block px-3 py-2 text-sm font-medium text-black hover:text-gray-600 hover:bg-gray-50 rounded-md"
+            >
+              WOMEN
+            </a>
+            <a
+              href="#"
+              className="block px-3 py-2 text-sm font-medium text-black hover:text-gray-600 hover:bg-gray-50 rounded-md"
+            >
+              KIDS
+            </a>
+            <a
+              href="#"
+              className="block px-3 py-2 text-sm font-bold text-black hover:text-gray-600 hover:bg-gray-50 rounded-md"
+            >
+              ACCESSORIES
+            </a>
+            <a
+              href="#"
+              className="block px-3 py-2 text-sm font-medium text-black hover:text-gray-600 hover:bg-gray-50 rounded-md"
+            >
+              OUTLET
+            </a>
           </div>
         </div>
-
-        {isMobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-100 shadow-lg">
-            <div className="px-4 py-2 space-y-1">
-              <a
-                href="#"
-                className="block px-3 py-2 text-sm font-medium text-black hover:text-gray-600 hover:bg-gray-50 rounded-md"
-              >
-                MEN
-              </a>
-              <a
-                href="#"
-                className="block px-3 py-2 text-sm font-medium text-black hover:text-gray-600 hover:bg-gray-50 rounded-md"
-              >
-                WOMEN
-              </a>
-              <a
-                href="#"
-                className="block px-3 py-2 text-sm font-medium text-black hover:text-gray-600 hover:bg-gray-50 rounded-md"
-              >
-                KIDS
-              </a>
-              <a
-                href="#"
-                className="block px-3 py-2 text-sm font-bold text-black hover:text-gray-600 hover:bg-gray-50 rounded-md"
-              >
-                ACCESSORIES
-              </a>
-              <a
-                href="#"
-                className="block px-3 py-2 text-sm font-medium text-black hover:text-gray-600 hover:bg-gray-50 rounded-md"
-              >
-                OUTLET
-              </a>
-            </div>
-          </div>
-        )}
-      </header>
+      )}
     </div>
   )
 }
