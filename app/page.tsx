@@ -1,14 +1,20 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
-import Link from "next/link"
-import { useState, useRef } from "react"
-import ProductCard from "@/components/ui/productCard"
+import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Link from "next/link";
+import { useState, useRef } from "react";
+import ProductCard from "@/components/ui/productCard";
 
 export default function page() {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const carouselApiRef = useRef<any>(null)
+  const [activeIndex, setActiveIndex] = useState(0);
+  const carouselApiRef = useRef<any>(null);
 
   const products = [
     {
@@ -91,7 +97,7 @@ export default function page() {
       badge: null,
       isNew: false,
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
@@ -108,8 +114,12 @@ export default function page() {
             />
 
             <div className="relative z-20 mt-auto">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 tracking-tight">SUPERSTAR</h1>
-              <p className="text-base sm:text-lg mb-6 sm:mb-8 max-w-sm">Because icons wear the original icon.</p>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black mb-4 tracking-tight">
+                SUPERSTAR
+              </h1>
+              <p className="text-base sm:text-lg mb-6 sm:mb-8 max-w-sm">
+                Because icons wear the original icon.
+              </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Button
                   variant="outline"
@@ -182,7 +192,9 @@ export default function page() {
           {/* Category Filter */}
           <div className="flex flex-wrap items-center justify-between mb-8 sm:mb-12">
             <div className="flex flex-wrap gap-0">
-              <button className="bg-black text-white px-6 py-2 text-sm font-medium">Originals</button>
+              <button className="bg-black text-white px-6 py-2 text-sm font-medium">
+                Originals
+              </button>
               {/* Updated shoe categories */}
               <button className="border border-gray-300 text-black px-6 py-2 text-sm font-medium hover:bg-gray-50">
                 Oxford
@@ -194,7 +206,9 @@ export default function page() {
                 Loafers
               </button>
             </div>
-            <button className="text-black font-medium underline text-sm">Shop all</button>
+            <button className="text-black font-medium underline text-sm">
+              Shop all
+            </button>
           </div>
 
           <div className="mb-16">
@@ -208,17 +222,20 @@ export default function page() {
                 }}
                 className="w-full"
                 setApi={(api) => {
-                  carouselApiRef.current = api
+                  carouselApiRef.current = api;
                   if (api) {
                     api.on("select", () => {
-                      setActiveIndex(api.selectedScrollSnap())
-                    })
+                      setActiveIndex(api.selectedScrollSnap());
+                    });
                   }
                 }}
               >
                 <CarouselContent className="gap-4">
                   {products.map((product) => (
-                    <CarouselItem key={product.id} className="basis-1/4 min-w-0">
+                    <CarouselItem
+                      key={product.id}
+                      className="basis-full md:basis-1/4 min-w-0"
+                    >
                       <ProductCard product={product} />
                     </CarouselItem>
                   ))}
@@ -246,25 +263,30 @@ export default function page() {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1 sm:gap-2">
               {/* Y-3 Tennis Card */}
-              <div className="group cursor-pointer transition-all duration-300 hover:border-2 hover:border-black p-3 hover:p-1">
+              <div className="cursor-pointer border border-transparent hover:border-black">
                 <div className="aspect-[4/5] bg-black overflow-hidden mb-4">
                   <img
                     src="/urban-adidas-style.png"
                     alt="Y-3 Tennis"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-lg font-bold">Y-3 Tennis</h3>
-                  <p className="text-sm text-gray-600">As worn by Sascha Zverev.</p>
-                  <Button variant="link" className="p-0 h-auto text-black font-medium underline">
+                  <p className="text-sm text-gray-600">
+                    As worn by Sascha Zverev.
+                  </p>
+                  <Button
+                    variant="link"
+                    className="p-0 h-auto text-black font-medium underline"
+                  >
                     Shop Now
                   </Button>
                 </div>
               </div>
 
               {/* Liverpool FC Jersey Card */}
-              <div className="group cursor-pointer transition-all duration-300 hover:border-2 hover:border-black p-3 hover:p-1">
+              <div className="cursor-pointer border border-transparent hover:border-black">
                 <div className="aspect-[4/5] bg-gray-200 overflow-hidden mb-4">
                   <img
                     src="/adidas-lifestyle.png"
@@ -273,18 +295,24 @@ export default function page() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <h3 className="text-lg font-bold">WIN A SIGNED LIVERPOOL FC AWAY JERSEY</h3>
+                  <h3 className="text-lg font-bold">
+                    WIN A SIGNED LIVERPOOL FC AWAY JERSEY
+                  </h3>
                   <p className="text-sm text-gray-600">
-                    Stand a chance to own a one-of-a-kind piece of Liverpool FC memorabilia with your adiClub points.
+                    Stand a chance to own a one-of-a-kind piece of Liverpool FC
+                    memorabilia with your adiClub points.
                   </p>
-                  <Button variant="link" className="p-0 h-auto text-black font-medium underline">
+                  <Button
+                    variant="link"
+                    className="p-0 h-auto text-black font-medium underline"
+                  >
                     Redeem now
                   </Button>
                 </div>
               </div>
 
               {/* Explore Beyond Limits Card */}
-              <div className="group cursor-pointer transition-all duration-300 hover:border-2 hover:border-black p-3 hover:p-1">
+              <div className="cursor-pointer border border-transparent hover:border-black">
                 <div className="aspect-[4/5] bg-gray-800 overflow-hidden mb-4">
                   <img
                     src="/adidas-street-style.png"
@@ -294,15 +322,20 @@ export default function page() {
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-lg font-bold">EXPLORE BEYOND LIMITS</h3>
-                  <p className="text-sm text-gray-600">adidas TERREX | National Geographic</p>
-                  <Button variant="link" className="p-0 h-auto text-black font-medium underline">
+                  <p className="text-sm text-gray-600">
+                    adidas TERREX | National Geographic
+                  </p>
+                  <Button
+                    variant="link"
+                    className="p-0 h-auto text-black font-medium underline"
+                  >
                     SHOP NOW
                   </Button>
                 </div>
               </div>
 
               {/* Never Out Of Style Card */}
-              <div className="group cursor-pointer transition-all duration-300 hover:border-2 hover:border-black p-3 hover:p-1">
+              <div className="cursor-pointer border border-transparent hover:border-black">
                 <div className="aspect-[4/5] bg-gray-300 overflow-hidden mb-4">
                   <img
                     src="/adidas-lifestyle-portrait.png"
@@ -312,8 +345,13 @@ export default function page() {
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-lg font-bold">Never Out Of Style</h3>
-                  <p className="text-sm text-gray-600">Shop the best of adidas</p>
-                  <Button variant="link" className="p-0 h-auto text-black font-medium underline">
+                  <p className="text-sm text-gray-600">
+                    Shop the best of adidas
+                  </p>
+                  <Button
+                    variant="link"
+                    className="p-0 h-auto text-black font-medium underline"
+                  >
                     Shop now
                   </Button>
                 </div>
@@ -338,8 +376,8 @@ export default function page() {
                 className="w-full"
               >
                 <CarouselContent className="gap-4">
-                  <CarouselItem className="basis-1/5 min-w-0">
-                    <div className="group cursor-pointer transition-all duration-300 hover:border-2 hover:border-black p-3 hover:p-1">
+                  <CarouselItem className="basis-full md:basis-1/5 min-w-0">
+                    <div className="cursor-pointer border border-transparent hover:border-black">
                       <div className="aspect-[4/5] bg-gray-100 overflow-hidden mb-4">
                         <img
                           src="/elegant-brown-oxfords.png"
@@ -347,12 +385,12 @@ export default function page() {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
-                      <h3 className="text-lg font-bold text-center border-b-2 border-black pb-1">OXFORD</h3>
+                      <h3 className="text-lg font-bold text-center">OXFORD</h3>
                     </div>
                   </CarouselItem>
 
-                  <CarouselItem className="basis-1/5 min-w-0">
-                    <div className="group cursor-pointer transition-all duration-300 hover:border-2 hover:border-black p-3 hover:p-1">
+                  <CarouselItem className="basis-full md:basis-1/5 min-w-0">
+                    <div className="cursor-pointer border border-transparent hover:border-black">
                       <div className="aspect-[4/5] bg-gray-100 overflow-hidden mb-4">
                         <img
                           src="/modern-white-sneakers.png"
@@ -360,12 +398,14 @@ export default function page() {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
-                      <h3 className="text-lg font-bold text-center border-b-2 border-black pb-1">SNEAKERS</h3>
+                      <h3 className="text-lg font-bold text-center">
+                        SNEAKERS
+                      </h3>
                     </div>
                   </CarouselItem>
 
-                  <CarouselItem className="basis-1/5 min-w-0">
-                    <div className="group cursor-pointer transition-all duration-300 hover:border-2 hover:border-black p-3 hover:p-1">
+                  <CarouselItem className="basis-full md:basis-1/5 min-w-0">
+                    <div className="cursor-pointer border border-transparent hover:border-black">
                       <div className="aspect-[4/5] bg-gray-100 overflow-hidden mb-4">
                         <img
                           src="/placeholder-6czw9.png"
@@ -373,12 +413,12 @@ export default function page() {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
-                      <h3 className="text-lg font-bold text-center border-b-2 border-black pb-1">LOAFERS</h3>
+                      <h3 className="text-lg font-bold text-center">LOAFERS</h3>
                     </div>
                   </CarouselItem>
 
-                  <CarouselItem className="basis-1/5 min-w-0">
-                    <div className="group cursor-pointer transition-all duration-300 hover:border-2 hover:border-black p-3 hover:p-1">
+                  <CarouselItem className="basis-full md:basis-1/5 min-w-0">
+                    <div className="cursor-pointer border border-transparent hover:border-black">
                       <div className="aspect-[4/5] bg-gray-100 overflow-hidden mb-4">
                         <img
                           src="/rugged-brown-hiking-boots.png"
@@ -386,12 +426,12 @@ export default function page() {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
-                      <h3 className="text-lg font-bold text-center border-b-2 border-black pb-1">BOOTS</h3>
+                      <h3 className="text-lg font-bold text-center">BOOTS</h3>
                     </div>
                   </CarouselItem>
 
-                  <CarouselItem className="basis-1/5 min-w-0">
-                    <div className="group cursor-pointer transition-all duration-300 hover:border-2 hover:border-black p-3 hover:p-1">
+                  <CarouselItem className="basis-full md:basis-1/5 min-w-0">
+                    <div className="cursor-pointer border border-transparent hover:border-black">
                       <div className="aspect-[4/5] bg-gray-100 overflow-hidden mb-4">
                         <img
                           src="/elegant-black-high-heels.png"
@@ -399,10 +439,11 @@ export default function page() {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
-                      <h3 className="text-lg font-bold text-center border-b-2 border-black pb-1">HEELS</h3>
+                      <h3 className="text-lg font-bold text-center">HEELS</h3>
                     </div>
                   </CarouselItem>
                 </CarouselContent>
+                <CarouselPrevious className="absolute -left-4 top-1/2 -translate-y-1/2 bg-white border border-gray-300 shadow-sm hover:bg-gray-50 w-12 h-12" />
                 <CarouselNext className="absolute -right-4 top-1/2 -translate-y-1/2 bg-white border border-gray-300 shadow-sm hover:bg-gray-50 w-12 h-12" />
               </Carousel>
             </div>
@@ -416,12 +457,12 @@ export default function page() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
               {/* Store 1 */}
-              <div className="group cursor-pointer transition-all duration-300 hover:border-2 hover:border-black p-3 hover:p-1">
+              <div className="cursor-pointer border border-transparent hover:border-black">
                 <div className="aspect-[4/5] bg-gray-100 overflow-hidden mb-4">
                   <img
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1st%20store-ztktjDzNHUodAHmdSjVDizv0qkriKU.jpeg"
                     alt="Shoe Style Store 1"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="space-y-2 text-center">
@@ -437,12 +478,12 @@ export default function page() {
               </div>
 
               {/* Store 2 */}
-              <div className="group cursor-pointer transition-all duration-300 hover:border-2 hover:border-black p-3 hover:p-1">
+              <div className="cursor-pointer border border-transparent hover:border-black">
                 <div className="aspect-[4/5] bg-gray-100 overflow-hidden mb-4">
                   <img
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2nd%20Store-E0EUxvVujHFWagOIv8ZGXVjU3k7lbi.jpeg"
                     alt="Shoe Style Store 2"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="space-y-2 text-center">
@@ -458,12 +499,12 @@ export default function page() {
               </div>
 
               {/* Store 3 */}
-              <div className="group cursor-pointer transition-all duration-300 hover:border-2 hover:border-black p-3 hover:p-1">
+              <div className="cursor-pointer border border-transparent hover:border-black">
                 <div className="aspect-[4/5] bg-gray-100 overflow-hidden mb-4">
                   <img
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/3rd%20Store-0ANuYciSWPZJuE54s9Be6ZDamO3WdK.png"
                     alt="Shoe Style Store 3"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="space-y-2 text-center">
@@ -489,7 +530,7 @@ export default function page() {
             className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black mb-8 sm:mb-12 tracking-tight leading-tight"
             style={{ fontFamily: "ITC Avant Garde Gothic, sans-serif" }}
           >
-            SHOE STYLE AMBUR FOR QUALITY, COMFORT & STYLE - SINCE 1997
+            SHOE STYLE FOR QUALITY, COMFORT & STYLE - SINCE 1997
           </h2>
 
           <div
@@ -497,46 +538,50 @@ export default function page() {
             style={{ fontFamily: "ITC Avant Garde Gothic, sans-serif" }}
           >
             <p>
-              With over 28 years of experience in the footwear and leather industry, Shoe Style Ambur has grown into a
-              trusted name for quality, comfort, and style. Since our establishment in 1997, we have been committed to
-              crafting and curating an exclusive collection of shoes and leather products that cater to every need —
-              from everyday wear to special occasions.
+              With over 28 years of experience in the footwear and leather
+              industry, Shoe Style has grown into a trusted name for quality,
+              comfort, and style. Since our establishment in 1997, we have been
+              committed to crafting and curating an exclusive collection of
+              shoes and leather products that cater to every need — from
+              everyday wear to special occasions.
             </p>
 
             <p>
-              Our wide range includes stylish and durable footwear for men, women, and kids, along with premium leather
-              goods that reflect timeless craftsmanship. Each product is carefully selected to ensure the perfect blend
-              of design, comfort, and durability, making sure our customers always step out in confidence.
+              Our wide range includes stylish and durable footwear for men,
+              women, and kids, along with premium leather goods that reflect
+              timeless craftsmanship. Each product is carefully selected to
+              ensure the perfect blend of design, comfort, and durability,
+              making sure our customers always step out in confidence.
             </p>
 
             <p>
-              Over the years, we have built long-lasting relationships with our customers by delivering not just
-              products, but also an experience rooted in trust, value, and authenticity. Whether you are looking for
-              classic formals, trendy casuals, or comfortable everyday wear, Shoe Style Ambur is your one-stop
-              destination for footwear and leather essentials.
+              Over the years, we have built long-lasting relationships with our
+              customers by delivering not just products, but also an experience
+              rooted in trust, value, and authenticity. Whether you are looking
+              for classic formals, trendy casuals, or comfortable everyday wear,
+              Shoe Style is your one-stop destination for footwear and leather
+              essentials.
             </p>
 
             <p className="text-lg sm:text-xl lg:text-2xl font-semibold">
-              Step in today and discover why we've been the choice of generations since 1997.
+              Step in today and discover why we've been the choice of
+              generations since 1997.
             </p>
           </div>
         </div>
       </section>
 
       {/* SHOE STYLE branding section with promotional banner */}
-      <section className="bg-black text-white py-8 sm:py-12">
-        <div className="text-center">
-          <h2
-            className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black mb-2 tracking-tight"
-            style={{ fontFamily: "BRADHI, sans-serif" }}
-          >
-            SHOE STYLE
-          </h2>
-          <p className="text-sm sm:text-base text-gray-300" style={{ fontFamily: "Calibri, sans-serif" }}>
-            Since 1997
-          </p>
+      <section className="bg-black text-white py-4 sm:py-8">
+        <div className="text-center flex content-center justify-center">
+          <img
+            src="/images/shoestylelogoiconWhite.png"
+            alt="shoestyle logo"
+            height={200}
+            width={200}
+          />
         </div>
       </section>
     </div>
-  )
+  );
 }
