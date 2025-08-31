@@ -1,6 +1,6 @@
-"use client"
-import { ChevronDown, Menu, X } from "lucide-react"
-import { useState, useEffect } from "react"
+"use client";
+import { Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -8,35 +8,49 @@ import {
   NavigationMenuList,
   NavigationMenuContent,
   NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
+} from "@/components/ui/navigation-menu";
 
+const topBannerText = [
+  "GET 10% OFF ON YOUR FIRST ORDER",
+  "FREE DELIVERY, RETURN & EXCHANGE",
+];
 export default function Header() {
-  const [isVisible, setIsVisible] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const controlNavbar = () => {
       if (typeof window !== "undefined") {
-        const currentScrollY = window.scrollY
+        const currentScrollY = window.scrollY;
 
         // Show navbar when scrolling up or at top
         if (currentScrollY < lastScrollY || currentScrollY < 10) {
-          setIsVisible(true)
+          setIsVisible(true);
         } else {
           // Hide navbar when scrolling down
-          setIsVisible(false)
+          setIsVisible(false);
         }
 
-        setLastScrollY(currentScrollY)
+        setLastScrollY(currentScrollY);
       }
-    }
+    };
 
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", controlNavbar)
-      return () => window.removeEventListener("scroll", controlNavbar)
-    }
-  }, [lastScrollY])
+    const timer = setTimeout(() => {
+      setCurrentIndex((prevIndex) => {
+        return (prevIndex + 1) % topBannerText.length;
+      });
+    }, 5000);
+
+    return () => {
+      clearTimeout(timer);
+      if (typeof window !== "undefined") {
+        window.addEventListener("scroll", controlNavbar);
+        return () => window.removeEventListener("scroll", controlNavbar);
+      }
+    };
+  }, [lastScrollY, currentIndex, topBannerText]);
 
   return (
     <div
@@ -47,8 +61,8 @@ export default function Header() {
       {/* Top Banner */}
       <div className="bg-black text-white text-center py-2 text-xs sm:text-sm font-medium">
         <div className="flex items-center justify-center gap-2 px-4">
-          <span className="truncate">GET 10% OFF ON YOUR FIRST ORDER</span>
-          <ChevronDown className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+          <span className="truncate">{topBannerText[currentIndex]}</span>
+          {/* <ChevronDown className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" /> */}
         </div>
       </div>
 
@@ -58,13 +72,13 @@ export default function Header() {
           <div className="flex items-center justify-between h-14 sm:h-16">
             {/* Logo */}
             <div className="flex-shrink-0">
-              <a href="/" className="block">
-                <h1
-                  className="text-black text-lg font-extrabold leading-5 sm:text-xl hover:text-gray-600 transition-colors"
-                  style={{ fontFamily: "BRADHI, sans-serif" }}
-                >
-                  SHOE STYLE
-                </h1>
+              <a href="/" className="block object-cover">
+                <img
+                  src="/images/shoestylelogoicon.png"
+                  alt="shoestyle logo"
+                  height={150}
+                  width={150}
+                />
               </a>
             </div>
 
@@ -81,37 +95,49 @@ export default function Header() {
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/men/casual"
                         >
-                          <div className="text-sm font-medium leading-none">Casual</div>
+                          <div className="text-sm font-medium leading-none">
+                            Casual
+                          </div>
                         </NavigationMenuLink>
                         <NavigationMenuLink
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/men/formal"
                         >
-                          <div className="text-sm font-medium leading-none">Formal</div>
+                          <div className="text-sm font-medium leading-none">
+                            Formal
+                          </div>
                         </NavigationMenuLink>
                         <NavigationMenuLink
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/men/boots"
                         >
-                          <div className="text-sm font-medium leading-none">Boots</div>
+                          <div className="text-sm font-medium leading-none">
+                            Boots
+                          </div>
                         </NavigationMenuLink>
                         <NavigationMenuLink
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/men/belt"
                         >
-                          <div className="text-sm font-medium leading-none">Belt</div>
+                          <div className="text-sm font-medium leading-none">
+                            Belt
+                          </div>
                         </NavigationMenuLink>
                         <NavigationMenuLink
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/men/wallets"
                         >
-                          <div className="text-sm font-medium leading-none">Wallets</div>
+                          <div className="text-sm font-medium leading-none">
+                            Wallets
+                          </div>
                         </NavigationMenuLink>
                         <NavigationMenuLink
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/men/jerkins"
                         >
-                          <div className="text-sm font-medium leading-none">Jerkins</div>
+                          <div className="text-sm font-medium leading-none">
+                            Jerkins
+                          </div>
                         </NavigationMenuLink>
                       </div>
                     </NavigationMenuContent>
@@ -126,43 +152,57 @@ export default function Header() {
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/women/formals"
                         >
-                          <div className="text-sm font-medium leading-none">Formals</div>
+                          <div className="text-sm font-medium leading-none">
+                            Formals
+                          </div>
                         </NavigationMenuLink>
                         <NavigationMenuLink
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/women/casuals"
                         >
-                          <div className="text-sm font-medium leading-none">Casuals</div>
+                          <div className="text-sm font-medium leading-none">
+                            Casuals
+                          </div>
                         </NavigationMenuLink>
                         <NavigationMenuLink
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/women/heel"
                         >
-                          <div className="text-sm font-medium leading-none">Heel</div>
+                          <div className="text-sm font-medium leading-none">
+                            Heel
+                          </div>
                         </NavigationMenuLink>
                         <NavigationMenuLink
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/women/handbags"
                         >
-                          <div className="text-sm font-medium leading-none">Handbags</div>
+                          <div className="text-sm font-medium leading-none">
+                            Handbags
+                          </div>
                         </NavigationMenuLink>
                         <NavigationMenuLink
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/women/wallets"
                         >
-                          <div className="text-sm font-medium leading-none">Wallets</div>
+                          <div className="text-sm font-medium leading-none">
+                            Wallets
+                          </div>
                         </NavigationMenuLink>
                         <NavigationMenuLink
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/women/belt"
                         >
-                          <div className="text-sm font-medium leading-none">Belt</div>
+                          <div className="text-sm font-medium leading-none">
+                            Belt
+                          </div>
                         </NavigationMenuLink>
                         <NavigationMenuLink
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/women/jerkin"
                         >
-                          <div className="text-sm font-medium leading-none">Jerkin</div>
+                          <div className="text-sm font-medium leading-none">
+                            Jerkin
+                          </div>
                         </NavigationMenuLink>
                       </div>
                     </NavigationMenuContent>
@@ -177,13 +217,17 @@ export default function Header() {
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/kids/boys"
                         >
-                          <div className="text-sm font-medium leading-none">Boys</div>
+                          <div className="text-sm font-medium leading-none">
+                            Boys
+                          </div>
                         </NavigationMenuLink>
                         <NavigationMenuLink
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/kids/girls"
                         >
-                          <div className="text-sm font-medium leading-none">Girls</div>
+                          <div className="text-sm font-medium leading-none">
+                            Girls
+                          </div>
                         </NavigationMenuLink>
                       </div>
                     </NavigationMenuContent>
@@ -198,43 +242,57 @@ export default function Header() {
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/accessories/bagpack"
                         >
-                          <div className="text-sm font-medium leading-none">Bagpack</div>
+                          <div className="text-sm font-medium leading-none">
+                            Bagpack
+                          </div>
                         </NavigationMenuLink>
                         <NavigationMenuLink
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/accessories/laptop-bag"
                         >
-                          <div className="text-sm font-medium leading-none">Laptop Bag</div>
+                          <div className="text-sm font-medium leading-none">
+                            Laptop Bag
+                          </div>
                         </NavigationMenuLink>
                         <NavigationMenuLink
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/accessories/sling-bag"
                         >
-                          <div className="text-sm font-medium leading-none">Sling Bag</div>
+                          <div className="text-sm font-medium leading-none">
+                            Sling Bag
+                          </div>
                         </NavigationMenuLink>
                         <NavigationMenuLink
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/accessories/gloves"
                         >
-                          <div className="text-sm font-medium leading-none">Gloves</div>
+                          <div className="text-sm font-medium leading-none">
+                            Gloves
+                          </div>
                         </NavigationMenuLink>
                         <NavigationMenuLink
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/accessories/passport-holder"
                         >
-                          <div className="text-sm font-medium leading-none">Passport Holder</div>
+                          <div className="text-sm font-medium leading-none">
+                            Passport Holder
+                          </div>
                         </NavigationMenuLink>
                         <NavigationMenuLink
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/accessories/keychain"
                         >
-                          <div className="text-sm font-medium leading-none">Keychain</div>
+                          <div className="text-sm font-medium leading-none">
+                            Keychain
+                          </div>
                         </NavigationMenuLink>
                         <NavigationMenuLink
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                           href="/accessories/shoe-horn"
                         >
-                          <div className="text-sm font-medium leading-none">Shoe Horn</div>
+                          <div className="text-sm font-medium leading-none">
+                            Shoe Horn
+                          </div>
                         </NavigationMenuLink>
                       </div>
                     </NavigationMenuContent>
@@ -256,7 +314,11 @@ export default function Header() {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle mobile menu"
             >
-              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isMobileMenuOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
             </button>
           </div>
         </div>
@@ -299,5 +361,5 @@ export default function Header() {
         )}
       </header>
     </div>
-  )
+  );
 }
